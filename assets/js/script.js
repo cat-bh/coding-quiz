@@ -4,20 +4,22 @@ var startButton = document.getElementById("start-btn");
 var welcomeContent = document.getElementById("welcome-content");
 var questionsContentEl = document.getElementById("questions");
 
+var score = 0;
+
 var questionIndex = 0;
 
 var questionarray = [
     {
         question: "question1",
         answer1: "first option",
-        answer2: "second option",
+        answer2: "Im right",
         answer3: "third option",
         answer4: "fourth option",
         correctAns: "2"
     },
     {
         question: "question2",
-        answer1: "first option",
+        answer1: "im right",
         answer2: "second option",
         answer3: "third option",
         answer4: "fourth option",
@@ -28,14 +30,14 @@ var questionarray = [
         answer1: "first option",
         answer2: "second option",
         answer3: "third option",
-        answer4: "fourth option",
+        answer4: "im right",
         correctAns: "4"
     },
     {
         question: "question4",
         answer1: "first option",
         answer2: "second option",
-        answer3: "third option",
+        answer3: "im right",
         answer4: "fourth option",
         correctAns: "3"
     }
@@ -95,38 +97,65 @@ var buttonClickHandler =  function(event) {
     if (targetElement.matches(".ans-btn")) {
         var ansNum = targetElement.getAttribute("data-answer-id");
         var currentIndex = questionIndex;
-        checkAns(ansNum, currentIndex);
+
+        var rightOrWrong = checkAns(ansNum, currentIndex);
+
+        // Alert user whether their answer was right or wrong
+        var response = document.createElement("div");
+        response.textContent = rightOrWrong;
+        response.className = "alert";
+        document.querySelector("body").appendChild(response);
+        setTimeout(function() {
+            response.remove();
+        }, 1500)
+
         //display next question
         questionIndex++;
-        console.log("index" + questionIndex);
 
         // Check if all questions have been asked
         if (questionIndex < questionarray.length) {
             displayQuestion(questionIndex);
         } else {
-            quizOver();
+            // end quiz
+            countdown = 1;
         }
-    
-    } else {
-        console.log("ooh we got a click, but not a button");
-    }
+
+    } 
 };
 
+// Check if user selected the correct answer
 var checkAns = function(ansNum, currentIndex) {
-    console.log("in check answer function");
+    var correctAns = questionarray[currentIndex].correctAns;
+    if (ansNum === correctAns) {
+        console.log("Correct")
+        score++;
+        return "Correct!";
+    } else {
+        console.log("wrong");
+        countdown = countdown - 9;
+        return "Incorrect";
+    }
 };
 
 var quizOver = function() {
     //display score and ask for initials
+    questionsContentEl.innerHTML = "";
+    console.log("game over" + score);
+
+    var info = document.createElement("div");
+    info.innerHTML = "<h3>Quiz Over! </h3> <span>Your final score is: " + score +"</span>";
+
+    questionsContentEl.appendChild(info);
 };
 
 
 
+// event listeners
 startButton.addEventListener("click", function() {
     welcomeContent.remove();
     var timeLeft = setInterval(function() {
         countdown--;
-        console.log(countdown);
+        
         timer.textContent = countdown;
         if (countdown <= 0) {
             clearInterval(timeLeft);
@@ -137,3 +166,4 @@ startButton.addEventListener("click", function() {
 })
 
 questionsContentEl.addEventListener("click", buttonClickHandler);
+
