@@ -145,7 +145,14 @@ var quizOver = function() {
     var info = document.createElement("div");
     info.innerHTML = "<h3>Quiz Over! </h3> <span>Your final score is: " + score +"</span>";
 
+    var saveScoreForm = document.createElement("form");
+    saveScoreForm.className = "score-form";
+
+    saveScoreForm.innerHTML = "<span>Enter initials:</span> <input type='text' name='player-initials'/>" + 
+    "<button id='save-score' class='btn'>Save Score</button>";
+
     questionsContentEl.appendChild(info);
+    questionsContentEl.appendChild(saveScoreForm);
 };
 
 

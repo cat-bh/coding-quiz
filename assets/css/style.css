@@ -55,8 +55,15 @@ nav a {
 
 #questions {
     text-align: center;
+    font-size: 30px;
     
 }
+
+#questions h3 {
+    font-size: 40px;
+}
+
+
 
 .q-a-div {
     display: flex;
@@ -76,4 +83,14 @@ nav a {
     color: #15616dc4;
     margin: 0 auto;
     padding-left: 10px;
+}
+
+input {
+    padding: 10px 5px;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.score-form {
+    margin-top: 15px;
 }
