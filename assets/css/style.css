@@ -19,11 +19,12 @@ h1 {
 
 .btn {
     background-color: #f5963d;
-    color: #65d7db;
-    border: 2px solid #65d7db;
+    color: #15616d;
+    border: 2px solid #15616d;
     border-radius: 5px;
     font-size: 24px;
     padding: 10px 20px;
+    margin-bottom: 10px;
 }
 
 nav {
@@ -46,4 +47,20 @@ nav a {
     width: 50%;
     margin: 0 auto 20px auto;
     font-size: 20px;
+}
+
+#questions {
+    text-align: center;
+    
+}
+
+.q-a-div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.q-a-div h3 {
+    font-size: 40px;
 }
