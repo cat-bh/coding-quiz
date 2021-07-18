@@ -91,6 +91,7 @@ var displayQuestion = function(index) {
 };
 
 // When an answer button is clicked
+// Or player has cliced save score button
 var buttonClickHandler =  function(event) {
     var targetElement = event.target;
 
@@ -123,23 +124,73 @@ var buttonClickHandler =  function(event) {
     } else if (targetElement.matches("#save-score")) {
         event.preventDefault();
         var userInitial = document.getElementById("player-initials").value;
+
+        if (!userInitial || userInitial === " ") {
+            alert("Please enter a name");
+            return false;
+        }
         
-        localStorage.setItem("recentInitial", userInitial);
-        localStorage.setItem("recentScore", score);
+        updateHighscore(userInitial);
 
         location.href = "./highscore.html";
     }
+};
+
+// Updates highscores saved in local storage
+var updateHighscore = function(userInitial) {
+    // set player object
+    var playerInfo = {
+        name: userInitial,
+        score: score
+    }
+
+    var currentHighscores = localStorage.getItem("highscores");
+
+    var tempArr = [];
+    var playerScoreAdded = false;
+
+    // check if any high scores are currently saved
+    if (!currentHighscores) {
+        tempArr.push(playerInfo);
+        localStorage.setItem("highscores", JSON.stringify(tempArr));
+        return false;
+    } 
+
+    currentHighscores = JSON.parse(currentHighscores);
+    
+    // Loop through current array and add in the player score
+    for (var i = 0; i < currentHighscores.length; i++){
+        
+        var savedScore = parseInt(currentHighscores[i].score);
+
+        if (savedScore >= playerInfo.score) {
+            tempArr.push(currentHighscores[i]);
+            
+        } else {
+            console.log("score is less than hs but outside add function");
+            if (!playerScoreAdded) {
+                console.log("inside the add player score");
+                tempArr.push(playerInfo);
+                playerScoreAdded = true;
+            }
+            tempArr.push(currentHighscores[i]);
+        };
+    };
+    if (!playerScoreAdded) {
+        tempArr.push(playerInfo);
+    };
+
+    localStorage.setItem("highscores", JSON.stringify(tempArr));
+
 };
 
 // Check if user selected the correct answer
 var checkAns = function(ansNum, currentIndex) {
     var correctAns = questionarray[currentIndex].correctAns;
     if (ansNum === correctAns) {
-        console.log("Correct")
         score++;
         return "Correct!";
     } else {
-        console.log("wrong");
         countdown = countdown - 9;
         return "Incorrect";
     }
