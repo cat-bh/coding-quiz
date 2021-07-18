@@ -120,7 +120,15 @@ var buttonClickHandler =  function(event) {
             countdown = 1;
         }
 
-    } 
+    } else if (targetElement.matches("#save-score")) {
+        event.preventDefault();
+        var userInitial = document.getElementById("player-initials").value;
+        
+        localStorage.setItem("recentInitial", userInitial);
+        localStorage.setItem("recentScore", score);
+
+        location.href = "./highscore.html";
+    }
 };
 
 // Check if user selected the correct answer
@@ -148,7 +156,7 @@ var quizOver = function() {
     var saveScoreForm = document.createElement("form");
     saveScoreForm.className = "score-form";
 
-    saveScoreForm.innerHTML = "<span>Enter initials:</span> <input type='text' name='player-initials'/>" + 
+    saveScoreForm.innerHTML = "<span>Enter initials:</span> <input type='text' name='player-initials' id='player-initials'/>" + 
     "<button id='save-score' class='btn'>Save Score</button>";
 
     questionsContentEl.appendChild(info);

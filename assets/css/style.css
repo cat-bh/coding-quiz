@@ -59,10 +59,11 @@ nav a {
     
 }
 
-#questions h3 {
+
+
+h3 {
     font-size: 40px;
 }
-
 
 
 .q-a-div {
@@ -72,9 +73,7 @@ nav a {
     margin: 0 auto;
 }
 
-.q-a-div h3 {
-    font-size: 40px;
-}
+
 
 .alert {
     font-size: 25px;
@@ -93,4 +92,22 @@ input {
 
 .score-form {
     margin-top: 15px;
+}
+
+/* highscore page */
+.content {
+    margin: 0 auto;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    background-color: aliceblue;
+    border-radius: 10px;
+    list-style: none;
+    font-size: 24px;
+    padding: 5px;
+    margin: 5px;
 }
