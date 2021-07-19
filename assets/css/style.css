@@ -40,7 +40,11 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: #022844;
+    color: #650286;
+}
+
+nav a:hover {
+    text-shadow: 1px 1px 10px rgb(181, 136, 189);
 }
 
 #welcome-content {
@@ -111,3 +115,4 @@ li {
     padding: 5px;
     margin: 5px;
 }
+

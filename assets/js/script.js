@@ -1,4 +1,4 @@
-var countdown = 100;
+var countdown = 50;
 var timer = document.getElementById("timer");
 var startButton = document.getElementById("start-btn");
 var welcomeContent = document.getElementById("welcome-content");
@@ -10,35 +10,35 @@ var questionIndex = 0;
 
 var questionarray = [
     {
-        question: "question1",
-        answer1: "first option",
-        answer2: "Im right",
-        answer3: "third option",
-        answer4: "fourth option",
+        question: "String values must be enclosed within _______ when being assigned to variables.",
+        answer1: "Curly brackets",
+        answer2: "Commas",
+        answer3: "Quotes",
+        answer4: "Parenthesis",
+        correctAns: "3"
+    },
+    {
+        question: "Common data types do NOT include:",
+        answer1: "Booleans",
+        answer2: "Alerts",
+        answer3: "Strings",
+        answer4: "Numbers",
         correctAns: "2"
     },
     {
-        question: "question2",
-        answer1: "im right",
-        answer2: "second option",
-        answer3: "third option",
-        answer4: "fourth option",
-        correctAns: "1"
-    },
-    {
-        question: "question3",
-        answer1: "first option",
-        answer2: "second option",
-        answer3: "third option",
-        answer4: "im right",
+        question: "Arrays in Javascript can be used to store: ",
+        answer1: "Numbers and strings",
+        answer2: "Booleans",
+        answer3: "Other arrays",
+        answer4: "All of the above",
         correctAns: "4"
     },
     {
-        question: "question4",
-        answer1: "first option",
-        answer2: "second option",
-        answer3: "im right",
-        answer4: "fourth option",
+        question: "The condition in an if / else statement is enclosed with _______.",
+        answer1: "Curly brackets",
+        answer2: "Square brackets",
+        answer3: "Parenthesis",
+        answer4: "Quotes",
         correctAns: "3"
     }
 ];
